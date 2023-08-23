@@ -16,12 +16,12 @@ function registrarPedido() {
     const cantidad = parseInt(document.getElementById("cantidad").value);
     let precioUnitario = 990; // Precio unitario del producto
 
-    const productosPermitidos = ["Gletcher", "Gletcher Light", "Gletcher Dark "]; // Nombres de productos permitidos
+    const productosPermitidos = ["Gletcher", "Gletcher Light", "Gletcher Dark"]; // Nombres de productos permitidos
 
     if (nombreProducto === '' || isNaN(cantidad) || cantidad <= 0) {
         alert('Por favor, ingresa datos válidos para el pedido.');
     } else if (!productosPermitidos.includes(nombreProducto)) {
-        alert('Nombre de producto no válido. Solo se permiten los siguientes nombres: Gletcher, Gletcher Light, Gletcher Dark.');
+        alert('Nombre de producto no válido. Solo se permiten los siguientes nombres: Gletcher, Gletcher Light, Gletcher Dark');
     } else {
         let mensaje = `Has registrado un pedido de ${cantidad} unidades de ${nombreProducto}.`;
 
