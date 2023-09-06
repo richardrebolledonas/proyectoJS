@@ -1,20 +1,55 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Proyecto</title>
-    <script src="./JS/index.js"></script>
+    <title>Carrito de Compras</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+    </style>
 </head>
 <body>
-    <h1>GLETSCHER BREWERY</h1>
-    <H2>Pedido de productos</H2>
-    <form id="pedidoFormulario">
-        <label for="nombreProducto">Nombre de la cerveza que disfrutara:</label>
-        <input type="text" id="nombreProducto" required>
-        <label for="cantidad">Cantidad:</label>
-        <input type="number" id="cantidad" required>
-        <button type="button" onclick="registrarPedido()">Registrar Pedido</button>
-    </form>    
+    <h1>GLETCHER BREWERY</h1>
+    <h2>Gletcher Normal</h2>
+    <h2>Gletcher Light</h2>
+    <H2>Gletcher Dark</H2>
+    <h3>Choose yours</h3>
+    <div>
+        <label for="nombreProducto">Beer Name:</label>
+        <input type="text" id="nombreProducto" placeholder="Nombre del producto">
+    </div>
+    <div>
+        <label for="cantidad">Amount:</label>
+        <input type="number" id="cantidad" placeholder="Cantidad">
+    </div>
+    <div>
+        <button onclick="registrarPedido()">Register Order</button>
+        <button onclick="mostrarOrden()">Show Order</button>
+    </div>
+
+    <table id="orden">
+        <tr>
+            <th>Product</th>
+            <th>Amount</th>
+            <th>Total Price</th>
+            <th>Actions</th>
+        </tr>
+    </table>
+
+    <h2>Total: $<span id="total">0</span></h2>
+
+    <script src="./JS/index.js"></script>
 </body>
 </html>
