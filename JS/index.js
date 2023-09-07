@@ -1,18 +1,31 @@
+
 // Cargar los pedidos desde un archivo JSON 
 let pedidos = cargarPedidos();
 
-function registrarPedido() {
-    const nombreProducto = document.getElementById("nombreProducto").value.toLowerCase(); // Convertir a minúsculas
-    const cantidad = parseInt(document.getElementById("cantidad").value);
-    let precioUnitario = 990; // Precio unitario del producto
 
-    const productosPermitidos = ["gletcher", "gletcher light", "gletcher dark"]; // Nombres de productos permitidos en minúsculas
+
+function registrarPedido() {
+    const nombreProducto = document.getElementById("nombreProducto").value.toLowerCase();
+    const cantidad = parseInt(document.getElementById("cantidad").value);
+    let precioUnitario = 990;
+
+    const productosPermitidos = ["gletcher regular", "gletcher light", "gletcher dark"];
 
     if (nombreProducto === '' || isNaN(cantidad) || cantidad <= 0) {
-        alert('Please, enter valid data for the order.');
+        Toastify({
+            text: "Please, enter valid data for the order.",
+            duration: 5000,
+            gravity: "top",
+            backgroundColor: "red",
+        }).showToast();
         return;
     } else if (!productosPermitidos.includes(nombreProducto)) {
-        alert('Invalid product name. Only the following names are allowed: Gletcher, Gletcher Light, Gletcher Dark(en mayúsculas o minúsculas)');
+        Toastify({
+            text: "Invalid product name. Only the following names are allowed: Gletcher Regular, Gletcher Light, Gletcher Dark (in upper or lower case).",
+            duration: 6000,
+            gravity: "top",
+            backgroundColor: "red",
+        }).showToast();
         return;
     }
 
@@ -20,13 +33,12 @@ function registrarPedido() {
 
     if (cantidad > 10) {
         mensaje += " Large quantities! You have won a discount.";
-        precioUnitario -= 100; // Aplicar descuento si la cantidad es mayor a 10
+        precioUnitario -= 100;
     }
 
     const totalPedido = precioUnitario * cantidad;
     mensaje += `The total price is $${totalPedido}.`;
 
-    // detalles del pedido al array
     const pedido = {
         producto: nombreProducto,
         cantidad: cantidad,
@@ -34,9 +46,13 @@ function registrarPedido() {
     };
     pedidos.push(pedido);
 
-    alert(mensaje);
+    Toastify({
+        text: mensaje,
+        duration: 7000,
+        gravity: "top",
+        backgroundColor: "green",
+    }).showToast();
 
-    // Actualizar la tabla de pedidos y el total
     actualizarTablaPedidos();
     calcularTotal();
 }
@@ -55,8 +71,16 @@ function mostrarOrden() {
         }
     }
 
-    alert(mensaje);
+    Toastify({
+        text: mensaje,
+        duration: 5000,
+        gravity: "top",
+        backgroundColor: "blue",
+    }).showToast();
 }
+
+
+
 
 function eliminarPedido(index) {
     pedidos.splice(index, 1);
@@ -99,7 +123,7 @@ function calcularTotal() {
 
 function cargarPedidos() {
     try {
-        // Intentar cargar los pedidos desde el localStorage en formato JSON
+        // cargar los pedidos desde el localStorage en formato JSON
         const pedidosJSON = localStorage.getItem('pedidos');
         if (pedidosJSON) {
             return JSON.parse(pedidosJSON);
@@ -122,6 +146,8 @@ function guardarPedidos() {
     }
 }
 
+
 // Actualizar la tabla de pedidos y el total al cargar la página
 actualizarTablaPedidos();
 calcularTotal();
+
