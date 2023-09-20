@@ -29,11 +29,16 @@
     <h3>Choose yours</h3>
     <div>
         <label for="nombreProducto">Beer Name:</label>
-        <input type="text" id="nombreProducto" placeholder="Nombre del producto">
+        <select id="nombreProducto">
+            <option value="gletcher regular">Gletcher Regular</option>
+            <option value="gletcher light">Gletcher Light</option>
+            <option value="gletcher dark">Gletcher Dark</option>
+        </select>
     </div>
+    
     <div>
         <label for="cantidad">Amount:</label>
-        <input type="number" id="cantidad" placeholder="Cantidad">
+        <input type="number" id="cantidad" placeholder="Amount">
     </div>
     <div>
         <button onclick="registrarPedido()">Register Order</button>

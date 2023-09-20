@@ -1,0 +1,19 @@
+{
+    "pedidos": [
+        {
+            "producto": "gletcher regular",
+            "cantidad": 3,
+            "precioTotal": 2970
+        },
+        {
+            "producto": "gletcher light",
+            "cantidad": 2,
+            "precioTotal": 1980
+        },
+        {
+            "producto": "gletcher dark",
+            "cantidad": 1,
+            "precioTotal": 990
+        }
+    ]
+}

@@ -1,11 +1,29 @@
 
 // Cargar los pedidos desde un archivo JSON 
 let pedidos = cargarPedidos();
-
+// Cargar los pedidos desde el archivo JSON en la carpeta "data"
+function cargarPedidos() {
+    try {
+        fetch('./data/mis_pedidos.json') // Ruta relativa al archivo JSON
+            .then(response => response.json())
+            .then(data => {
+                pedidos = data.pedidos; // Asignar los pedidos al array pedidos
+                actualizarTablaPedidos();
+                calcularTotal();
+            })
+            .catch(error => {
+                console.error("Error al cargar los pedidos:", error);
+            });
+    } catch (error) {
+        console.error("Error al cargar los pedidos:", error);
+        return [];
+    }
+}
 
 
 function registrarPedido() {
     const nombreProducto = document.getElementById("nombreProducto").value.toLowerCase();
+
     const cantidad = parseInt(document.getElementById("cantidad").value);
     let precioUnitario = 990;
 
@@ -112,7 +130,7 @@ function actualizarTablaPedidos() {
         newRow.insertCell(2).textContent = `$${pedido.precioTotal}`;
         const accionesCell = newRow.insertCell(3);
         accionesCell.innerHTML = `<button onclick="eliminarPedido(${index})">Delete</button>`;
-        accionesCell.innerHTML += `<button onclick="modificarCantidad(${index}, prompt('Nueva cantidad:'))">Modify Quantity</button>`;
+        accionesCell.innerHTML += `<button onclick="modificarCantidad(${index}, prompt('New amount:'))">Modify Quantity</button>`;
     }
 }
 
