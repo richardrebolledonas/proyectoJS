@@ -40,4 +40,7 @@
     color: rgb(17, 11, 4);
   }
   
+  .beerName {margin-left: 10px;}
+  .amount {margin-left: 10px;}
+  .total {margin-top: 10px;}
   
