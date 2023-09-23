@@ -117,6 +117,7 @@ function modificarCantidad(index, nuevaCantidad) {
 
 function actualizarTablaPedidos() {
     const ordenTable = document.getElementById("orden");
+    
     // Eliminar filas existentes
     while (ordenTable.rows.length > 1) {
         ordenTable.deleteRow(1);

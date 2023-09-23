@@ -37,6 +37,7 @@
     <h2>Gletcher Light</h2>
     <H2>Gletcher Dark</H2>
     <h3>Choose yours</h3>
+    
     <div class="beerName">
         <label for="nombreProducto">Beer Name:</label>
         <select id="nombreProducto">
@@ -48,15 +49,15 @@
     
     <div class="amount">
         <label for="cantidad">Amount:</label>
-        <input type="number" id="cantidad" placeholder="Amount">
+        <input type="number" id="cantidad" class="color-input" placeholder="Amount">
     </div>
     <div>
-        <button onclick="registrarPedido()">Register Order</button>
-        <button onclick="mostrarOrden()">Show Order</button>
+        <button id="registerButton" onclick="registrarPedido()">Register Order</button>
+        <button id="showOrderButton" onclick="mostrarOrden()">Show Order</button>
     </div>
 
     <table id="orden">
-        <tr>
+        <tr class="tabla">
             <th>Product</th>
             <th>Amount</th>
             <th>Total Price</th>
